@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Dialog Element</title>
+
+    <style>
+        .dialog::backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <button id="openDialog">Open Dialog</button>
+
+    <dialog class="dialog">
+        <p>This is a dialog!</p>
+        <button id="closeDialog">Close</button>
+    </dialog>
+    
+    <script>
+        const openDialog = document.querySelector('#openDialog')
+        const closeDialog = document.querySelector('#closeDialog')
+        const dialog = document.querySelector('.dialog')
+
+        dialog.addEventListener('click', (e) => {
+            const dialogDimensions = dialog.getBoundingClientRect();
+            if (
+                e.clientX < dialogDimensions.left ||
+                e.clientX > dialogDimensions.right ||
+                e.clientY < dialogDimensions.top ||
+                e.clientY > dialogDimensions.bottom
+            ) {
+                dialog.close();
+            }
+        })
+
+        openDialog.addEventListener('click', () => {
+            dialog.showModal()
+        })
+
+        closeDialog.addEventListener('click', () => {
+            dialog.close()
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Dialog Element</title>
+
+    <style>
+        .dialog[open] {
+            animation: dialog-animation .7s normal;
+        }
+
+        .dialog[open]::backdrop {
+            animation: dialog-backdrop-animation .7s normal;
+        }
+
+        .dialog::backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes dialog-animation {
+            0% { transform: translateY(100%); }
+        }
+
+        @keyframes dialog-backdrop-animation {
+            0% {  background-color: rgba(0, 0, 0, 0); }
+        }
+    </style>
+</head>
+<body>
+    <button id="openDialog">Open Dialog</button>
+
+    <dialog class="dialog">
+        <p>This is a dialog!</p>
+        <button id="closeDialog">Close</button>
+    </dialog>
+    
+    <script>
+        const openDialog = document.querySelector('#openDialog')
+        const closeDialog = document.querySelector('#closeDialog')
+        const dialog = document.querySelector('.dialog')
+
+        openDialog.addEventListener('click', () => {
+            dialog.showModal()
+        })
+
+        closeDialog.addEventListener('click', () => {
+            dialog.close()
+        })
+    </script>
+</body>
+</html>

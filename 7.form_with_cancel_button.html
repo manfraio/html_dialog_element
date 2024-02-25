@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Dialog Element</title>
+
+    <style>
+
+    </style>
+</head>
+<body>
+    <button id="openDialog">Open Dialog</button>
+
+    <dialog class="dialog">
+        <form method="get" action="/add_user">
+            <input type="text" name="name"/>
+            <button type="submit">Submit</button>
+            <button formmethod="dialog">Cancel</button>
+        </form>
+    </dialog>
+    
+    <script>
+        const openDialog = document.querySelector('#openDialog')
+        const closeDialog = document.querySelector('#closeDialog')
+        const dialog = document.querySelector('.dialog')
+
+        openDialog.addEventListener('click', () => {
+            dialog.showModal()
+        })
+
+        closeDialog.addEventListener('click', () => {
+            dialog.close()
+        })
+    </script>
+</body>
+</html>

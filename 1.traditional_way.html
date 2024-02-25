@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Dialog Element</title>
+
+    <style>
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0 ,0, .5);
+            padding: 10px;
+        }
+
+        .overlay.open {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }    
+
+        .dialog {
+            background: white;
+            border: 1px solid black;
+            padding: 1em;
+        }
+    </style>
+</head>
+<body>
+    <button id="openDialog">Open Dialog</button>
+
+    <div class="overlay">
+        <div class="dialog">
+            <p>This is a dialog!</p>
+            <button id="closeDialog">Close</button>
+        </div>
+    </div>
+    
+    <script>
+        const openDialog = document.querySelector('#openDialog')
+        const closeDialog = document.querySelector('#closeDialog')
+        const overlay = document.querySelector('.overlay')
+
+        document.body.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                overlay.classList.remove('open')
+            }
+        })
+
+        openDialog.addEventListener('click', () => {
+            overlay.classList.add('open')
+        })
+
+        closeDialog.addEventListener('click', () => {
+            overlay.classList.remove('open')
+        })
+    </script>
+</body>
+</html>
